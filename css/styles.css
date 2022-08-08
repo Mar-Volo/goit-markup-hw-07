@@ -70,6 +70,19 @@ img {
   margin: 0;
 }
 
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
 /* base styles */
 
 .section {
@@ -95,53 +108,59 @@ address {
   font-style: normal;
 }
 
+.logo {
+  font-family: var(--secondary-font);
+  font-weight: 700;
+  font-size: 26px;
+  line-height: calc(31 / 26);
+  color: var(--accent-txt-cl);
+}
+
 /* header-cection */
 
 .header {
   border-bottom: 1px solid #ececec;
 }
 
-.header-conteiner {
+.header__conteiner {
   display: flex;
   align-items: center;
   margin-left: auto;
   margin-right: auto;
 }
 
-.logo {
-  color: var(--accent-txt-cl);
-  font-family: var(--secondary-font);
-  font-weight: 700;
-  font-size: 26px;
-  line-height: calc(31 / 26);
 
+.header__logo {
+  color: var(--accent-txt-cl);
   margin-right: 93px;
 }
-.logo-style {
+.header__logo--style {
   color: var(--logo-style-cl);
 }
-.header-link {
+
+
+
+.nav {
+  margin-right: auto;
+}
+
+.nav__list {
+  display: flex;
+  gap: 50px;
+}
+
+.nav__item:last-child {
+  margin-right: 0;
+}
+
+.nav__link {
+  display: block;
+  color: var(--main-txt-cl);
   font-weight: 500;
   font-size: 14px;
   line-height: calc(16 / 14);
   letter-spacing: 0.02em;
   display: block;
-}
-
-.header-nav {
-  margin-right: auto;
-}
-
-.header-list {
-  display: flex;
-  gap: 50px;
-}
-
-.header-item:last-child {
-  margin-right: 0;
-}
-
-.header-link {
   padding-top: 32px;
   padding-bottom: 32px;
   /* отвечает за значения свойства, для которого будет осуществлено плавный переход  по заданному времени.
@@ -155,25 +174,17 @@ address {
   /* указывает время задержки перед началом перехода */
 }
 
-.header-nav-item {
-  display: block;
-  color: var(--main-txt-cl);
-}
-
-.header-mail {
-  margin-right: 50px;
-}
-
-.header-link:hover,
-.header-link:focus {
+.nav__link:hover,
+.nav__link:focus {
   color: var(--accent-txt-cl);
 }
-.header-link-current {
+
+.nav__link--current {
   color: var(--accent-txt-cl);
   position: relative;
 }
 
-.header-link-current::after {
+.nav__link--current::after {
   content: "";
   position: absolute;
   bottom: -1px;
@@ -185,42 +196,52 @@ address {
   border-radius: 2px;
 }
 
+
+
 .contacts {
   display: flex;
 }
 
-.mail-icon {
-  margin-right: 10px;
-  fill: currentColor;
+.contacts__item {
+  margin-right: 50px;
 }
 
-.smartphone-icon {
-  margin-right: 10px;
-  fill: currentColor;
+.contacts__link {
+  display: block;
+  padding-top: 32px;
+  padding-bottom: 32px;
+    /* отвечает за значения свойства, для которого будет осуществлено плавный переход  по заданному времени.
+  Если не задать значения свойств перехода, то применится all
+  */
+  transition-property: color;
+  /* отвечает за время перехода одного состояния в другое */
+  transition-duration: 250ms;
+  /* функция распределения времени перехода */
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  /* указывает время задержки перед началом перехода */
 }
 
-.mail,
-.phone-number {
+.contacts__mail,
+.contacts__phone-number {
   color: var(--header-phone-number);
   display: flex;
   align-items: center;
 }
 
-/* hero section */
-
-.hero-h {
-  font-weight: 900;
-  font-size: 44px;
-  line-height: calc(60 / 44);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--hero-txt-cl);
-  width: 696px;
-  margin: 0 auto;
-  margin-bottom: 30px;
+.contacts__link:hover,
+.contacts__link:focus {
+  color: var(--accent-txt-cl);
 }
 
-.hero-section {
+.contacts__icon {
+  margin-right: 10px;
+  fill: currentColor;
+}
+
+
+/* hero section */
+
+.hero {
   background-color: var(--Dark-bg-cl-1);
   background-image: linear-gradient(
       to right,
@@ -238,7 +259,20 @@ address {
   margin: 0 auto;
 }
 
-.hero-button {
+
+.hero__discription {
+  font-weight: 900;
+  font-size: 44px;
+  line-height: calc(60 / 44);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--hero-txt-cl);
+  width: 696px;
+  margin: 0 auto;
+  margin-bottom: 30px;
+}
+
+.hero__button {
   background-color: var(--accent-txt-cl);
   font-family: inherit;
   font-weight: 700;
@@ -263,31 +297,36 @@ address {
   /* указывает время задержки перед началом перехода */
 }
 
-.hero-button:hover,
-.hero-button:focus {
+.hero__button:hover,
+.hero__button:focus {
   background-color: var(--hero-button-bg-cl);
 }
 
 /* benefits section */
 
-.benefits-conteiner {
+.benefits__conteiner {
   display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  border: 0;
-  padding: 0;
-  white-space: nowrap;
-  clip-path: inset(100%);
-  clip: rect(0 0 0 0);
-  overflow: hidden;
+.benefits__list {
+  display: flex;
+  gap: 30px;
 }
 
-.benefits-icon-block {
+.benefits__item {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: calc(24 / 14);
+  color: var(--main-txt-item-cl);
+}
+
+.benefits__item:last-child {
+  margin-right: 0;
+}
+
+.benefits__block {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -296,11 +335,8 @@ address {
   margin-bottom: 30px;
 }
 
-.our-benefits {
-  display: flex;
-}
 
-.benefits {
+.benefits__header {
   font-weight: 700;
   font-size: 14px;
   line-height: calc(16 / 14);
@@ -309,21 +345,11 @@ address {
   margin-bottom: 10px;
 }
 
-.benefits-list {
+.benefits__discription {
   margin-right: 30px;
   width: 270px;
 }
 
-.benefits-list:last-child {
-  margin-right: 0;
-}
-
-.benefits-item {
-  font-weight: 400;
-  font-size: 14px;
-  line-height: calc(24 / 14);
-  color: var(--main-txt-item-cl);
-}
 
 /* profession-section */
 
@@ -331,30 +357,27 @@ address {
   padding-top: 0;
 }
 
-.profession-h,
-.team-h {
+.profession__header {
   font-weight: 700;
   font-size: 36px;
   line-height: calc(42 / 35);
   text-align: center;
   color: var(--main-txt-cl);
-}
-
-.profession-h {
   margin-bottom: 50px;
 }
 
-.profession-list {
+
+.profession__list {
   display: flex;
   gap: 30px;
 }
 
-.profession-item {
+.profession__item {
   flex-basis: calc((100% - 30px * 2) / 3);
   position: relative;
 }
 
-.profession-discription {
+.profession__name {
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -371,58 +394,11 @@ address {
 
 /* team section */
 
-.team-h {
-  margin-bottom: 50px;
-}
-
-.our-team {
-  display: flex;
-  gap: 30px;
-}
-
-.team-item {
-  background-color: var(--hero-txt-cl);
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
-    0px 2px 1px rgba(0, 0, 0, 0.2);
-  border-radius: 0px 0px 4px 4px;
-  flex-basis: calc((100% - 30px * 3) / 4);
-}
-
-.team-wrapper {
-  padding-top: 30px;
-  padding-bottom: 30px;
-}
-
 .team {
   background-color: var(--portfolio-buttons-bg-cl);
 }
 
-.teammate {
-  font-weight: 500;
-  font-size: 16px;
-  line-height: calc(19 / 16);
-  text-align: center;
-  color: var(--main-txt-cl);
-  margin-bottom: 10px;
-}
-.teammate-profession {
-  font-weight: 400;
-  font-size: 16px;
-  line-height: calc(19 / 16);
-  text-align: center;
-  color: var(--main-txt-item-cl);
-  margin-bottom: 16px;
-}
-
-/*clients-section */
-
-.clients-section {
-  padding-top: 94px;
-  align-items: center;
-  justify-content: center;
-}
-
-.clients-h {
+.team__header {
   margin-bottom: 50px;
   font-weight: 700;
   font-size: 36px;
@@ -431,375 +407,52 @@ address {
   color: var(--main-txt-cl);
 }
 
-.clients-list {
+.team__list {
   display: flex;
   gap: 30px;
 }
 
-.clients-item {
-  flex-basis: calc((100%-30px * 5) / 6);
+.team__item {
+  background-color: var(--hero-txt-cl);
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 0px 0px 4px 4px;
+  flex-basis: calc((100% - 30px * 3) / 4);
 }
 
-.clients-link {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 170px;
-  height: 92px;
-  border: 1px solid var(--social-link-cl);
-  border-radius: 4px;
-  box-sizing: border-box;
-  color: var(--social-link-cl);
-  /* отвечает за значения свойства, для которого будет осуществлено плавный переход  по заданному времени.
-  Если не задать значения свойств перехода, то применится all
-  */
-  transition-property: color, border-color;
-  /* отвечает за время перехода одного состояния в другое */
-  transition-duration: 250ms;
-  /* функция распределения времени перехода */
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  /* указывает время задержки перед началом перехода */
+
+
+.teammate {
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
-.clients-icon {
-  fill: currentColor;
-}
-
-.clients-link:hover,
-.clients-link:focus {
-  border-color: var(--social-link-bg-accent-cl);
-  color: var(--accent-txt-cl);
-}
-
-/* footer section */
-
-.footer {
-  background-color: var(--Dark-bg-cl-1);
-  padding-top: 60px;
-  padding-bottom: 60px;
-}
-
-.footer-conteiner {
-  display: flex;
-  align-items: baseline;
-}
-
-.logo-footer {
-  display: block;
-  margin-bottom: 20px;
-}
-
-.logo-footer-style {
-  color: var(--hero-txt-cl);
-}
-
-.footer-list {
-  gap: 9px;
-}
-
-.addres-link,
-.mail-footer,
-.phone-number-footer {
-  font-weight: 400;
-  font-size: 14px;
-  line-height: calc(24 / 14);
-}
-
-.contacts-item {
-  margin-bottom: 9px;
-}
-
-.contacts-item:last-child {
-  margin-bottom: 0;
-}
-
-.addres-link {
-  color: var(--hero-txt-cl);
-  /* отвечает за значения свойства, для которого будет осуществлено плавный переход  по заданному времени.
-  Если не задать значения свойств перехода, то применится all
-  */
-  transition-property: color;
-  /* отвечает за время перехода одного состояния в другое */
-  transition-duration: 250ms;
-  /* функция распределения времени перехода */
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  /* указывает время задержки перед началом перехода */
-}
-
-.mail-footer,
-.phone-number-footer {
-  color: rgba(255, 255, 255, 0.6);
-  /* отвечает за значения свойства, для которого будет осуществлено плавный переход  по заданному времени.
-  Если не задать значения свойств перехода, то применится all
-  */
-  transition-property: color;
-  /* отвечает за время перехода одного состояния в другое */
-  transition-duration: 250ms;
-  /* функция распределения времени перехода */
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  /* указывает время задержки перед началом перехода */
-}
-.addres-link:hover,
-.addres-link:focus,
-.mail-footer:hover,
-.mail-footer:focus,
-.phone-number-footer:hover,
-.phone-number-footer:focus {
-  color: var(--accent-txt-cl);
-}
-.footer-socials-icons-conteiner {
-  margin-left: 70px;
-}
-
-.footer-socials-icons-conteiner-p {
-  font-weight: 700;
-  text-transform: uppercase;
-  color: var(--hero-txt-cl);
-  margin-bottom: 20px;
-  margin-right: 93px;
-}
-
-.footer-social-list {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 10px;
-}
-
-.footer-social-link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  color: var(--social-link-accent-cl);
-  background-color: var(--footer-socil-link-accent-cl);
-  /* отвечает за значения свойства, для которого будет осуществлено плавный переход  по заданному времени.
-  Если не задать значения свойств перехода, то применится all
-  */
-  transition-property: background-color;
-  /* отвечает за время перехода одного состояния в другое */
-  transition-duration: 250ms;
-  /* функция распределения времени перехода */
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  /* указывает время задержки перед началом перехода */
-}
-
-.footer-social-icon {
-  fill: currentColor;
-}
-
-.footer-social-link:hover,
-.footer-social-link:focus {
-  background-color: var(--social-link-bg-accent-cl);
-}
-
-.footer-form-box {
-  margin-left: auto;
-}
-
-.footer-form-box-p {
-  font-weight: 700;
-  text-transform: uppercase;
-  color: var(--hero-txt-cl);
-  margin-bottom: 20px;
-}
-
-.footer-form {
-  display: flex;
-}
-
-.footer-input-form {
-  width: 358px;
-  padding: 15px 16px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.15));
-  border-radius: 4px;
-  background-color: inherit;
-  margin-right: 12px;
-  outline: none;
-  color: var(--hero-txt-cl);
-}
-
-.footer-modal-form-btn {
-  font-weight: 700;
-  font-size: 16px;
-  line-height: calc(30 / 16);
-  letter-spacing: 0.06em;
-  width: 200px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--hero-txt-cl);
-  background-color: var(--accent-txt-cl);
-  padding: 10px 29px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.footer-modal-form-btn:hover,
-.footer-modal-form-btn:focus {
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
-}
-
-.footer-modal-form-btn-txt {
-  margin-right: 10px;
-}
-
-.footer-modal-form-btn-icon {
-  fill: var(--hero-txt-cl);
-}
-
-/** 
-PORTFOLIO SECTION 
-**/
-
-.buttons-list {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 50px;
-  gap: 8px;
-}
-
-.btn {
-  background-color: var(--portfolio-buttons-bg-cl);
-  font-family: inherit;
+.teammate__name {
   font-weight: 500;
   font-size: 16px;
-  line-height: calc(26 / 16);
+  line-height: calc(19 / 16);
   text-align: center;
-  letter-spacing: 0.03em;
-  border: none;
-  cursor: pointer;
-  padding: 6px 22px;
-  border-radius: 4px;
-
-  /* отвечает за значения свойства, для которого будет осуществлено плавный переход  по заданному времени.
-  Если не задать значения свойств перехода, то применится all
-  */
-  transition-property: color, background-color, box-shadow;
-  /* отвечает за время перехода одного состояния в другое */
-  transition-duration: 250ms;
-  /* функция распределения времени перехода */
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  /* указывает время задержки перед началом перехода */
-}
-
-.btn:hover,
-.btn:focus,
-.btn:active {
-  color: var(--hero-txt-cl);
-  background-color: var(--accent-txt-cl);
-  box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08),
-    0px 2px 2px rgba(0, 0, 0, 0.12);
-}
-
-.portfolio-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
-  padding: 0;
-}
-
-.portfolio-photo {
-  position: relative;
-  overflow: hidden;
-}
-
-.overlay {
-  background-color: var(--overlay-bg-cl);
-  position: absolute;
-  padding: 63px 24px;
-  top: 0;
-  left: 0;
-  transform: translateY(100%);
-  width: 100%;
-  height: 100%;
-  transition: transform 250ms ease-in-out;
-}
-
-.overlay-text {
-  color: var(--hero-txt-cl);
-  font-family: inherit;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: calc(28 / 18);
-  letter-spacing: 0.03em;
-}
-
-.portfolio-item {
-  flex-basis: calc((100% - 30px * 2) / 3);
-}
-
-/*
-.portfolio-item:hover .overlay {
-  transform: translateY(0);
-}
-*/
-.portfolio-link {
-  display: block;
-  /* отвечает за значения свойства, для которого будет осуществлено плавный переход  по заданному времени.
-  Если не задать значения свойств перехода, то применится all
-  */
-  transition-property: box-shadow;
-  /* отвечает за время перехода одного состояния в другое */
-  transition-duration: 250ms;
-  /* функция распределения времени перехода */
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  /* указывает время задержки перед началом перехода */
-}
-
-.portfolio-link:hover,
-.portfolio-link:focus {
-  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
-    1px 4px 6px rgba(0, 0, 0, 0.16);
-}
-
-.portfolio-link:hover .overlay,
-.portfolio-link:focus .overlay {
-  transform: translateY(0);
-}
-
-.portfolio-name {
-  border: 1px solid #eeeeee;
-  border-top: none;
-  padding: 20px 24px;
-  box-sizing: border-box;
-}
-
-.portfolio-item-h {
-  font-weight: 700;
-  font-size: 18px;
-  line-height: calc(36 / 18);
-  letter-spacing: 0.06em;
   color: var(--main-txt-cl);
-  margin-bottom: 4px;
+  margin-bottom: 10px;
 }
 
-.portfolio-item-p {
+.teammate__profession {
   font-weight: 400;
   font-size: 16px;
-  line-height: calc(30 / 16);
+  line-height: calc(19 / 16);
+  text-align: center;
   color: var(--main-txt-item-cl);
+  margin-bottom: 16px;
 }
 
-/**
-
-SOCIALS BLOCK
-
-**/
-
-.social-list {
+.teammate__list {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
 }
 
-.social-link {
+.teammate__link {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -830,14 +483,371 @@ fill: var(--social-link-accent-cl);
   fill: var(--social-link-cl);
 }
 */
-.social-link:hover,
-.social-link:focus {
+.teammate__link:hover,
+.teammate__link:focus {
   color: var(--social-link-accent-cl);
   background-color: var(--social-link-bg-accent-cl);
 }
 
-.social-icon {
+.teammate__icon {
   fill: currentColor;
+}
+
+/*clients-section */
+
+.clients__section {
+  padding-top: 94px;
+  align-items: center;
+  justify-content: center;
+}
+
+.clients__header {
+  margin-bottom: 50px;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: calc(42 / 35);
+  text-align: center;
+  color: var(--main-txt-cl);
+}
+
+.clients__list {
+  display: flex;
+  gap: 30px;
+}
+
+.clients__item {
+  flex-basis: calc((100%-30px * 5) / 6);
+}
+
+.clients__link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 170px;
+  height: 92px;
+  border: 1px solid var(--social-link-cl);
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: var(--social-link-cl);
+  /* отвечает за значения свойства, для которого будет осуществлено плавный переход  по заданному времени.
+  Если не задать значения свойств перехода, то применится all
+  */
+  transition-property: color, border-color;
+  /* отвечает за время перехода одного состояния в другое */
+  transition-duration: 250ms;
+  /* функция распределения времени перехода */
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  /* указывает время задержки перед началом перехода */
+}
+
+.clients__link:hover,
+.clients__link:focus {
+  border-color: var(--social-link-bg-accent-cl);
+  color: var(--accent-txt-cl);
+}
+
+.clients__icon {
+  fill: currentColor;
+}
+
+
+/* footer section */
+
+.footer {
+  background-color: var(--Dark-bg-cl-1);
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+.footer__conteiner {
+  display: flex;
+  align-items: baseline;
+}
+
+.footer__logo {
+  display: block;
+  margin-bottom: 20px;
+}
+
+.footer__logo--style {
+  color: var(--hero-txt-cl);
+}
+
+.footer__list {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.footer__link {
+  color: var(--hero-txt-cl);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: calc(24 / 14);
+  /* отвечает за значения свойства, для которого будет осуществлено плавный переход  по заданному времени.
+  Если не задать значения свойств перехода, то применится all
+  */
+  transition-property: color;
+  /* отвечает за время перехода одного состояния в другое */
+  transition-duration: 250ms;
+  /* функция распределения времени перехода */
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  /* указывает время задержки перед началом перехода */
+}
+
+.footer__link:hover,
+.footer__link:focus {
+  color: var(--accent-txt-cl);
+}
+
+.footer__link--style {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+
+
+.socials-icons {
+  margin-left: 70px;
+}
+
+.socials-icons__header {
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--hero-txt-cl);
+  margin-bottom: 20px;
+  margin-right: 93px;
+}
+
+.socials-icons__list {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+.socials-icons__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  color: var(--social-link-accent-cl);
+  background-color: var(--footer-socil-link-accent-cl);
+  /* отвечает за значения свойства, для которого будет осуществлено плавный переход  по заданному времени.
+  Если не задать значения свойств перехода, то применится all
+  */
+  transition-property: background-color;
+  /* отвечает за время перехода одного состояния в другое */
+  transition-duration: 250ms;
+  /* функция распределения времени перехода */
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  /* указывает время задержки перед началом перехода */
+}
+
+.socials-icons__link:hover,
+.socials-icons__link:focus {
+  background-color: var(--social-link-bg-accent-cl);
+}
+
+.socials-icons__icon {
+  fill: currentColor;
+}
+
+
+
+.footer-form-box {
+  margin-left: auto;
+}
+
+.footer-form-box__header {
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--hero-txt-cl);
+  margin-bottom: 20px;
+}
+
+
+
+.footer-form {
+  display: flex;
+}
+
+.footer-form__input {
+  width: 358px;
+  padding: 15px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.15));
+  border-radius: 4px;
+  background-color: inherit;
+  margin-right: 12px;
+  outline: none;
+  color: var(--hero-txt-cl);
+}
+
+.footer-form__btn {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: calc(30 / 16);
+  letter-spacing: 0.06em;
+  width: 200px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--hero-txt-cl);
+  background-color: var(--accent-txt-cl);
+  padding: 10px 29px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.footer-form__btn:hover,
+.footer-form__btn:focus {
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+}
+
+.footer-form__txt {
+  margin-right: 10px;
+}
+
+.footer-form__icon {
+  fill: var(--hero-txt-cl);
+}
+
+/** 
+PORTFOLIO SECTION 
+**/
+
+.portfolio__list {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+  gap: 8px;
+}
+
+.portfolio__btn {
+  background-color: var(--portfolio-buttons-bg-cl);
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: calc(26 / 16);
+  text-align: center;
+  letter-spacing: 0.03em;
+  border: none;
+  cursor: pointer;
+  padding: 6px 22px;
+  border-radius: 4px;
+
+  /* отвечает за значения свойства, для которого будет осуществлено плавный переход  по заданному времени.
+  Если не задать значения свойств перехода, то применится all
+  */
+  transition-property: color, background-color, box-shadow;
+  /* отвечает за время перехода одного состояния в другое */
+  transition-duration: 250ms;
+  /* функция распределения времени перехода */
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  /* указывает время задержки перед началом перехода */
+}
+
+.portfolio__btn:hover,
+.portfolio__btn:focus,
+.portfolio__btn:active {
+  color: var(--hero-txt-cl);
+  background-color: var(--accent-txt-cl);
+  box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08),
+    0px 2px 2px rgba(0, 0, 0, 0.12);
+}
+
+
+
+.products__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding: 0;
+}
+
+.products__item {
+  flex-basis: calc((100% - 30px * 2) / 3);
+}
+
+
+.products__photo {
+  position: relative;
+  overflow: hidden;
+}
+
+
+.products__overlay {
+  background-color: var(--overlay-bg-cl);
+  position: absolute;
+  padding: 63px 24px;
+  top: 0;
+  left: 0;
+  transform: translateY(100%);
+  width: 100%;
+  height: 100%;
+  transition: transform 250ms ease-in-out;
+}
+
+.products__text {
+  color: var(--hero-txt-cl);
+  font-family: inherit;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: calc(28 / 18);
+  letter-spacing: 0.03em;
+}
+
+.products__link {
+  display: block;
+  /* отвечает за значения свойства, для которого будет осуществлено плавный переход  по заданному времени.
+  Если не задать значения свойств перехода, то применится all
+  */
+  transition-property: box-shadow;
+  /* отвечает за время перехода одного состояния в другое */
+  transition-duration: 250ms;
+  /* функция распределения времени перехода */
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  /* указывает время задержки перед началом перехода */
+}
+
+.products__link:hover,
+.products__link:focus {
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
+    1px 4px 6px rgba(0, 0, 0, 0.16);
+}
+
+.products__link:hover .products__overlay,
+.products__link:focus .products__overlay {
+  transform: translateY(0);
+}
+
+
+
+.portfolio-name {
+  border: 1px solid #eeeeee;
+  border-top: none;
+  padding: 20px 24px;
+  box-sizing: border-box;
+}
+
+.portfolio-name__header {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: calc(36 / 18);
+  letter-spacing: 0.06em;
+  color: var(--main-txt-cl);
+  margin-bottom: 4px;
+}
+
+.portfolio-name__category {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: calc(30 / 16);
+  color: var(--main-txt-item-cl);
 }
 
 /* Modal window */
@@ -868,6 +878,13 @@ fill: var(--social-link-accent-cl);
   pointer-events: none;
 }
 
+.backdrop.is-hidden .modal {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.4) rotate(1turn);
+}
+
+
+
 .modal {
   position: absolute;
   top: 50%;
@@ -882,12 +899,9 @@ fill: var(--social-link-accent-cl);
   height: 581px;
 }
 
-.backdrop.is-hidden .modal {
-  opacity: 0;
-  transform: translate(-50%, -50%) scale(0.4) rotate(1turn);
-}
 
-.modal-btn {
+
+.modal__btn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -905,36 +919,39 @@ fill: var(--social-link-accent-cl);
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.modal-btn-icon {
+.modal__btn:hover,
+.modal__btn:focus {
+  color: var(--accent-txt-cl);
+}
+
+.modal__icon {
   fill: currentColor;
 }
 
-.modal-btn:hover,
-.modal-btn:focus {
-  color: var(--accent-txt-cl);
-}
+
+
 .modal-form {
   text-align: center;
 }
-.modal-discription {
+.modal-form__discription {
   display: block;
   font-size: 20px;
   margin-bottom: 12px;
 }
 
-.form-group {
+.modal-form__group {
   display: flex;
   flex-direction: column;
   gap: 10px;
   margin-bottom: 20px;
 }
 
-.form-field {
+.modal-form__field {
   position: relative;
   display: block;
 }
 
-.input-form {
+.modal-form__input {
   width: 100%;
   height: 40px;
   border: 1px solid rgba(33, 33, 33, 0.2);
@@ -944,33 +961,33 @@ fill: var(--social-link-accent-cl);
   transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.form-icon {
+.modal-form__icon {
   transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.input-form:hover + .form-icon,
-.input-form:focus + .form-icon {
+.modal-form__input:hover + .modal-form__icon,
+.modal-form__input:focus + .modal-form__icon {
   fill: var(--accent-txt-cl);
 }
 
-.input-form:hover,
-.input-form:focus {
+.modal-form__input:hover,
+.modal-form__input:focus {
   border-color: var(--accent-txt-cl);
 }
 
-.form-icon {
+.modal-form__icon {
   position: absolute;
   left: 12px;
   bottom: 11px;
 }
 
-.comment-form {
+.modal-form__input--comment-form {
   height: 120px;
   padding: 12px 16px;
   resize: none;
 }
 
-.comment-form::placeholder {
+.modal-form__input--comment-form::placeholder {
   font-weight: 400;
   font-size: 14px;
   line-height: 16px;
@@ -978,7 +995,7 @@ fill: var(--social-link-accent-cl);
   color: rgba(117, 117, 117, 0.5);
 }
 
-.label-comment {
+.modal-form__comment {
   text-align: left;
   display: block;
   margin-bottom: 4px;
@@ -988,7 +1005,9 @@ fill: var(--social-link-accent-cl);
   color: var(--main-txt-item-cl);
 }
 
-.modal-contract {
+
+
+.checkbox {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -996,26 +1015,26 @@ fill: var(--social-link-accent-cl);
   margin-bottom: 30px;
 }
 
-.contract-input:checked + .contract-form-icon .form-icon-uncheck {
+.checkbox__input:checked + .checkbox__icon .checkbox__icon--uncheck {
   opacity: 0;
   transition: opacity 250ms;
 }
 
-.form-icon-check {
+.checkbox__icon--check {
   opacity: 0;
   transition: opacity 250ms;
 }
 
-.contract-input:checked + .contract-form-icon .form-icon-check {
+.checkbox__input:checked + .checkbox__icon .checkbox__icon--check {
   opacity: 1;
 }
 
-.contract-text {
+.checkbox__text {
   color: var(--main-txt-item-cl);
   user-select: none;
 }
 
-.modal-contract-link {
+.checkbox__link {
   font-weight: 400;
   font-size: 14px;
   line-height: calc(24 / 14);
@@ -1024,7 +1043,7 @@ fill: var(--social-link-accent-cl);
   text-underline-position: under;
 }
 
-.modal-form-btn {
+.checkbox__btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1042,8 +1061,8 @@ fill: var(--social-link-accent-cl);
     box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.modal-form-btn:hover,
-.modal-form-btn:focus {
+.checkbox__btn:hover,
+.checkbox__btn:focus {
   background-color: var(--hero-button-bg-cl);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
 }

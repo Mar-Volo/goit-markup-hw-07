@@ -3,6 +3,7 @@
 }
 
 .portfolio__list {
+  @extend %reset-list;
   display: flex;
   justify-content: center;
   margin-bottom: 50px;
@@ -38,6 +39,7 @@
 }
 
 .products__list {
+  @extend %reset-list;
   display: flex;
   flex-wrap: wrap;
   gap: 30px;
@@ -75,6 +77,7 @@
 }
 
 .products__link {
+  @extend %reset-link;
   display: block;
 
   transition-property: box-shadow;

@@ -44,13 +44,13 @@
   padding-bottom: 94px;
 }
 
-.socials-icons__list, .footer__list, .clients__list, .teammate__list, .team__list, .profession__list, .benefits__list, .contacts, .nav__list {
+.products__list, .portfolio__list, .socials-icons__list, .footer__list, .clients__list, .teammate__list, .team__list, .profession__list, .benefits__list, .contacts, .nav__list {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.socials-icons__link, .footer__link, .footer__logo, .clients__link, .teammate__link, .contacts__mail,
+.products__link, .socials-icons__link, .footer__link, .footer__logo, .clients__link, .teammate__link, .contacts__mail,
 .contacts__phone-number, .nav__link, .header__logo {
   text-decoration: none;
   color: currentColor;

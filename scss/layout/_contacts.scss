@@ -27,6 +27,7 @@
 .contacts__mail,
 .contacts__phone-number {
   @extend %reset-link;
+  font-weight: 500;
   color: var(--header-phone-number);
   display: flex;
   align-items: center;

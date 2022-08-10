@@ -2,11 +2,6 @@
 .benefits {
   @extend %section;
 }
-.benefits__conteiner {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
 .benefits__list {
   @extend %reset-list;
@@ -43,6 +38,5 @@
 }
 
 .benefits__discription {
-  margin-right: 30px;
   width: 270px;
 }
